@@ -17,13 +17,12 @@ keymap = {
     # shortcut projects:
     'cd home': ['cd ~/'],
     'cd talon': ['cd ~/.talon/user'],
-    'cd developer': ['cd ~/Developer/'],
-    'cd edge labs': ['cd ~/Developer/edge-labs'],
-    'cd feedback': ['cd ~/Developer/feedback-client'],
-    'cd sales client': ['cd ~/Developer/sales-client'],
-    'cd sales backend': ['cd ~/Developer/sales-api'],
-    'cd (lough | laugh)': ['cd ~/Developer/laf-client'],
-    'cd voice demo': ['cd ~/Developer/voicedemo'],
+    'cd developer': ['cd ~/Developer'],
+    'cd edge labs': ['cd ~/Developer/Netlight/edge-labs'],
+    'cd feedback': ['cd ~/Developer/Netlight/feedback-client'],
+    'cd sales client': ['cd ~/Developer/Netlight/sales-client'],
+    'cd sales backend': ['cd ~/Developer/Netlight/sales-api'],
+    'cd (lough | laugh)': ['cd ~/Developer/Netlight/laf-client'],
 
     # iterm functionality
     '[toggle] full-screen': Key('cmd-shift-enter'),
@@ -41,6 +40,8 @@ keymap = {
 
     # package managers
     'start': ['npm run start\n'],
+    '(start | run) ios': ['npm run ios:dev\n'],
+    '(start | run) android': ['npm run android:dev\n'],
     'start mocked': ['npm run start:mockedBackend\n'],
     '(start | run) backend': ['SPRING_PROFILES_ACTIVE=development ./gradlew bootRun\n'],
     'test': ['npm run test\n'],
@@ -65,7 +66,7 @@ keymap = {
     'status': ['git status\n'],
     '(difference | did | dave)': 'git diff\n',
     'pull': ['git pull\n'],
-    'origin master': ['git pull origin master\n'],
+    '(pull origin) | (origin master)': ['git pull origin master\n'],
     '[remote] add upstream': ['git remote add upstream'],
     'fetch upstream': ['git fetch upstream'],
     'fetch': ['git fetch\n'],

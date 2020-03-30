@@ -1,14 +1,13 @@
 from talon import ctrl
 from talon.voice import Context, Key, press, Str
-from user.utils import parse_words_as_integer
-from user.utils import parse_words_as_integer, repeat_function, optional_numerals
+from user.utils import repeat_function, optional_numerals, numerals, text_to_number
 
 # context = Context('VSCode', bundle='com.microsoft.VSCode')
 context = Context('VSCode', bundle='com.microsoft.VSCodeInsiders')
 
 
 def jump_to_line(m):
-    line_number = parse_words_as_integer(m._words[1:])
+    line_number = text_to_number(m._words[1:])
 
     if line_number == None:
         return
@@ -23,7 +22,7 @@ def jump_to_line(m):
 
 
 def jump_tabs(m):
-    line_number = parse_words_as_integer(m._words[1:])
+    line_number = text_to_number(m._words[1:])
 
     if line_number == None:
         return
@@ -45,8 +44,8 @@ def select_lines_function(m):
         if str(word) == 'until':
             break
         divider += 1
-    line_number_from = int(str(parse_words_as_integer(m._words[2:divider])))
-    line_number_until = int(str(parse_words_as_integer(m._words[divider+1:])))
+    line_number_from = int(str(text_to_number(m._words[2:divider])))
+    line_number_until = int(str(text_to_number(m._words[divider+1:])))
     number_of_lines = line_number_until - line_number_from
 
     press('cmd-g')
@@ -57,7 +56,7 @@ def select_lines_function(m):
 
 
 def fold_level(m):
-    line_number = parse_words_as_integer(m._words)
+    line_number = text_to_number(m._words)
     if line_number > 9:
         return
     press('cmd-k')
@@ -81,7 +80,7 @@ def navigate_left(m):
 
 context.keymap({
     # Navigating text
-    'line' + optional_numerals: jump_to_line,
+    'line' + numerals: jump_to_line,
 
     # Selecting text
     'select line' + optional_numerals + 'until' + optional_numerals: select_lines_function,
@@ -124,7 +123,7 @@ context.keymap({
     # 'snipple': Key('end cmd-shift-left delete'),
 
     'snapple' + optional_numerals: repeat_function('down cmd-shift-k up cmd-left'),
-    'select instances': Key('cmd-shift-l'),
+    '(select instances) | refactor': Key('cmd-shift-l'),
     'indent': Key('alt-shift-f'),
     'line up' + optional_numerals: repeat_function('alt-up'),
     'line down' + optional_numerals: repeat_function('alt-down'),

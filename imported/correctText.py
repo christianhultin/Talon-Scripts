@@ -11,9 +11,6 @@ def correctText():
     with clip.capture() as s:
         press('cmd-c')
     inputText = s.get()
-    # print('!!!!')
-    # print(inputText)
-    # print('!!!!')
     correctText = formatText(inputText)
     clip.set(correctText)
     press('cmd-v')
