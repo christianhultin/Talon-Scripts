@@ -33,7 +33,7 @@
 #     def restore(self):
 #         if self.saved_mouse:
 #             mouse.last_ctrl = self.saved_mouse
-#             ctrl.mouse(self.saved_mouse.x, self.saved_mouse.y)
+#             ctrl.mouse_move(self.saved_mouse.x, self.saved_mouse.y)
 #             self.saved_mouse = None
 #             self.main_gaze = False
 

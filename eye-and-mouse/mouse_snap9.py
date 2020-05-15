@@ -92,7 +92,7 @@ def narrow(m):
 
 def click():
     x, y = ctrl.mouse_pos()
-    ctrl.mouse_click(x, y, button=0, times=1, wait=16000)
+    ctrl.mouse_click(pos=(x, y), button=0, times=1, wait=16000)
 
 
 digits = dict((str(n), n) for n in range(1, 11))

@@ -25,8 +25,8 @@ def delayed_click(m, button=0, times=1):
     old = eye_mouse.config.control_mouse
     eye_mouse.config.control_mouse = False
     x, y = click_pos(m)
-    ctrl.mouse(x, y)
-    ctrl.mouse_click(x, y, button=button, times=times, wait=16000)
+    ctrl.mouse_move(x, y)
+    ctrl.mouse_click(pos=(x, y), button=button, times=times, wait=16000)
     time.sleep(0.032)
     eye_mouse.config.control_mouse = old
 
@@ -44,17 +44,17 @@ def delayed_tripclick(m):
 
 def mouse_drag(m):
     x, y = click_pos(m)
-    ctrl.mouse_click(x, y, down=True)
+    ctrl.mouse_click(pos=(x, y), down=True)
 
 def mouse_release(m):
     x, y = click_pos(m)
-    ctrl.mouse_click(x, y, up=True)
+    ctrl.mouse_click(pos=(x, y), up=True)
 
 def regular_click(m):
-    ctrl.mouse_click(x=None, y=None, button=0, times=1)
+    ctrl.mouse_click(pos=(None, None), button=0, times=1)
 
 def regular_right_click(m):
-    ctrl.mouse_click(x=None, y=None, button=1, times=1)
+    ctrl.mouse_click(pos=(None, None), button=1, times=1)
 
 keymap = {
     '(click | pick )': delayed_click, # regular_click,

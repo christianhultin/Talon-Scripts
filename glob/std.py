@@ -69,7 +69,7 @@ formatters = {
     'title':  (False, lambda i, word, _: word.capitalize()),
     'allcaps': (False, lambda i, word, _: word.upper()),
     'dubstring': (False, surround('"')),
-    'string': (False, surround("'")),
+    # 'string': (False, surround("'")),
     'padded': (False, surround(" ")),
     'rot-thirteen':  (False, rot13),
 }

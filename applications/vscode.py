@@ -69,13 +69,13 @@ distance_to_navigate = 500
 def navigate_right(m):
     press('ctrl-cmd-shift-l')
     (x, y) = ctrl.mouse_pos()
-    ctrl.mouse(x + distance_to_navigate, y)
+    ctrl.mouse_move(x + distance_to_navigate, y)
 
 
 def navigate_left(m):
     press('ctrl-cmd-shift-h')
     (x, y) = ctrl.mouse_pos()
-    ctrl.mouse(x - distance_to_navigate, y)
+    ctrl.mouse_move(x - distance_to_navigate, y)
 
 
 context.keymap({
@@ -115,6 +115,12 @@ context.keymap({
     # tabbing
     'jump' + optional_numerals: jump_tabs,
     '(new tab | nippy)': Key('cmd-n'),
+
+    # spacing
+    'slap' + optional_numerals: [Key('esc'), repeat_function('enter')],
+    'slappy': [Key('esc'), Key('end enter')],
+    'slippy': [Key('esc'), Key('home enter up')],
+    '(stacy | spacey)': [Key('esc'), Key('enter enter up')],
 
     # editing
     'bracken': [Key('cmd-shift-ctrl-right')],

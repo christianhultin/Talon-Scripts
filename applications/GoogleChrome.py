@@ -130,7 +130,8 @@ context.keymap({
 
     # strings to paste:
     'localhost': ['https://localhost:3000'],
-    'playground (account | username | login | credentials )': ['matl@playground.netlight.com', Key('tab'), 'Hejsan123', Key('enter')],
+    'playground (account | username | login | credentials )': ['chul@playground.netlight.com', Key('tab'), 'Hejsan123', Key('enter')],
+    'playground (account | username | login | credentials ) Mat': ['chul@playground.netlight.com', Key('tab'), 'Hejsan123', Key('enter')],
     'playground password': ['Hejsan123'],
 
     # developer tools

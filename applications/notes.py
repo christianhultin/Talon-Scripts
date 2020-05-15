@@ -5,8 +5,8 @@ ctx = Context('Notes', bundle='com.apple.Notes')
 
 def click_mouse(xPos,yPos):
     def click_mouse_function(m):
-        ctrl.mouse(xPos, yPos)
-        ctrl.mouse_click(button=0, times=1, wait=16000)
+        ctrl.mouse_move(xPos, yPos)
+        ctrl.mouse_click()
     return click_mouse_function
 
 ctx.keymap({

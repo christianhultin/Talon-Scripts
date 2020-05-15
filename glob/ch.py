@@ -82,10 +82,6 @@ keymap.update({
     '(rick | rip)' + optional_numerals: repeat_function('backspace'),
     '(backspace | rep | rap)' + optional_numerals: repeat_function('alt-backspace'),
 
-    'slap' + optional_numerals: repeat_function('enter'),
-    'slappy': [Key('end enter')],
-    'slippy': [Key('home enter up')],
-    '(stacy | spacey)': [Key('enter enter up')],
     'tab' + optional_numerals: repeat_function('tab'),
 
     # select
@@ -170,7 +166,7 @@ keymap.update({
     'bold': Key('cmd-b'),
     'italics': Key('cmd-i'),
     'underline': Key('cmd-u'),
-    
+
 }) 
 
 ctx.keymap(keymap)

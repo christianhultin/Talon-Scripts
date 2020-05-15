@@ -24,7 +24,7 @@ def move_mouse_relative(m):
 
 def move_mouse_absolute(xPos, yPos):
     def move_mouse_to_position(m):
-        ctrl.mouse(xPos, yPos)
+        ctrl.mouse_move(xPos, yPos)
     return move_mouse_to_position
 
 # SCROLLING
@@ -91,7 +91,7 @@ def mouse_smooth_scroll(amount):
 # OTHER
 def mouse_install(m):
     move_mouse_absolute(1860, 92)(m)
-    ctrl.mouse_click(x=None, y=None, button=0, times=1)
+    ctrl.mouse_click(pos=(None, None), button=0, times=1)
     sleep(0.3)
     press('down')
     sleep(0.3)

@@ -73,11 +73,11 @@
 # def move_mouse_programmatically_without_auto_click(xPos, yPos):
 #     if auto_clicker.is_activated():
 #         auto_clicker.disable()
-#         ctrl.mouse(xPos, yPos)
+#         ctrl.mouse_move(xPos, yPos)
 #         sleep(0.5)
 #         auto_clicker.enable()
 #     else:
-#         ctrl.mouse(xPos, yPos)
+#         ctrl.mouse_move(xPos, yPos)
 
 # mouse_scroll_mode = {
 #     'LEFT': (220, 420),
@@ -94,12 +94,12 @@
 #         if ctrl.mouse_pos() != (x, y):
 #             if auto_clicker.is_activated():
 #                 auto_clicker.disable()
-#                 ctrl.mouse(x, y)
+#                 ctrl.mouse_move(x, y)
 #                 ctrl.mouse_scroll(direction * distance, 0)
 #                 sleep(0.5)
 #                 auto_clicker.enable()
 #             else:
-#                 ctrl.mouse(x, y)
+#                 ctrl.mouse_move(x, y)
 #                 ctrl.mouse_scroll(direction * distance, 0)
 #         else:
 #             ctrl.mouse_scroll(direction * distance, 0)
