@@ -140,7 +140,7 @@ def replace_words(words, mapping, count):
     new_words = []
     i = 0
     while i < len(words) - count + 1:
-        phrase = words[i : i + count]
+        phrase = words[i: i + count]
         key = " ".join(phrase)
         if key in mapping:
             new_words.append(mapping[key])
@@ -228,7 +228,8 @@ numeral_map["oh"] = 0  # synonym for zero
 numeral_map["and"] = None  # drop me
 
 numerals = " (" + " | ".join(sorted(numeral_map.keys())) + ")+"
-optional_numerals = " (" + " | ".join(sorted(numeral_map.keys())) + ")*"
+# optional_numerals = " (" + " | ".join(sorted(numeral_map.keys())) + ")*"
+optional_numerals = ""
 
 
 def text_to_number(words):
@@ -276,7 +277,7 @@ def text_to_range(words, delimiter="until"):
     tmp = [str(s).lower() for s in words]
     split = tmp.index(delimiter)
     start = text_to_number(words[:split])
-    end = text_to_number(words[split + 1 :])
+    end = text_to_number(words[split + 1:])
     return start, end
 
 
@@ -301,7 +302,8 @@ def parse_words_as_integer(words):
         return None
 
     # Map number words to simple number values
-    number_values = list(map(lambda w: number_conversions[w.word], number_words))
+    number_values = list(
+        map(lambda w: number_conversions[w.word], number_words))
 
     # Filter out initial zero values
     normalized_number_values = []
@@ -318,6 +320,7 @@ def parse_words_as_integer(words):
 
     # Create merged number string and convert to int
     return int(''.join(normalized_number_values))
+
 
 def alternatives(options):
     return " (" + " | ".join(sorted(options)) + ")+"
@@ -336,9 +339,6 @@ for n in [20, 30, 40, 50, 60, 70, 80, 90]:
     numeral_map[str(n)] = n
 numeral_map["oh"] = 0  # synonym for zero
 
-numerals = " (" + " | ".join(sorted(numeral_map.keys())) + ")+"
-optional_numerals = " (" + " | ".join(sorted(numeral_map.keys())) + ")*"
-
 
 def preserve_clipboard(fn):
     def wrapped_function(*args, **kwargs):
@@ -348,11 +348,12 @@ def preserve_clipboard(fn):
 
     return wrapped_function
 
+
 def repeat_function(keyDescription, delay=0, actionsPerRepeatCycle=1, cycles=1):
     def repeater(m):
         keysToBePressed = keyDescription.split()
         numberOfCycles = cycles
-        
+
         if cycles <= 1:
             numberOfCycles = parse_words_as_integer(m._words)
             if numberOfCycles == None:
@@ -365,6 +366,7 @@ def repeat_function(keyDescription, delay=0, actionsPerRepeatCycle=1, cycles=1):
                     sleep(delay)
     return repeater
 
+
 def command_with_delay(keyDescription, delay):
     def repeater(m):
         keysToBePressed = keyDescription.split()
@@ -372,3 +374,23 @@ def command_with_delay(keyDescription, delay):
             press(key)
             sleep(delay)
     return repeater
+
+
+ordinalNumbers = [
+    'zero',
+    'first',
+    'second',
+    'third',
+    'fourth',
+    'fifth',
+    'sixth',
+    'seventh',
+    'eighth',
+    'ninth',
+    'tenth',
+    'eleventh',
+    'twelfth',
+    'thirteenth',
+    'fourteenth',
+    'fifteenth',
+]

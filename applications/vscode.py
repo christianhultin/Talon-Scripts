@@ -136,6 +136,7 @@ context.keymap({
 
     # various
     '(comment | cast)': Key('cmd-shift-7'),
+    '(arrange | fix) imports': Key('alt-shift-o'),
     'block comment': Key('alt-shift-a'),
     'master': Key('cmd-p'),
     'search all': Key('cmd-shift-f'),

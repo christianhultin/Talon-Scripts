@@ -8,6 +8,7 @@ from user.utils import parse_words_as_integer, repeat_function, optional_numeral
 import string
 from time import sleep
 
+
 def go_direction(m):
     direction_type = m._words[0].word
 
@@ -22,23 +23,28 @@ def go_direction(m):
     for i in range(0, line_number):
         press(direction_type)
 
+
 def go_to_path(path):
-	def path_function(m):
-		press('cmd-shift-g')
-		Str(path)(None)
-		press('return')
-	return path_function
+    def path_function(m):
+        press('cmd-shift-g')
+        Str(path)(None)
+        press('return')
+    return path_function
+
 
 scrollingDistance = 60
+
 
 def lock_computer(m):
     speech.set_enabled(False),
     press('ctrl-cmd-q')
 
+
 def shift_screen(m):
     press('ctrl-alt-cmd-shift-down')
     sleep(0.7)
     press('ctrl-alt-cmd-shift-m')
+
 
 ctx = Context('chInput')
 
@@ -58,13 +64,13 @@ keymap.update({
     'home': Key('cmd-left'),
     '(end | and)': Key('cmd-right'),
 
-    '(lefty | leah | leah | lee)' + optional_numerals: repeat_function('left'),
+    '(lefty | leah | leah | lee)': Key('left'),
     '(righty | law | la)' + optional_numerals: repeat_function('right'),
     'big up': [Key('up')] * 10,
     'large up': [Key('up')] * 20,
     'big down':  [Key('down')] * 10,
     'large down': [Key('down')] * 20,
-    '(left | up | right | down)' + optional_numerals : go_direction,
+    '(left | up | right | down)' + optional_numerals: go_direction,
 
     # undo
     '(undo | dazzle)' + optional_numerals: repeat_function('cmd-z'),
@@ -91,34 +97,36 @@ keymap.update({
     'select start': lambda m: ctrl.key_press('shift', down=True),
     'select stop': lambda m: ctrl.key_press('shift', up=True),
     'deselect': Key('alt-right alt-shift-left'),
-    'find': Key('cmd-f'),   
+    'find': Key('cmd-f'),
 
     'shreepway': Key('cmd-shift-up'),
     'shroomway': Key('cmd-shift-down'),
     'shreep' + optional_numerals: repeat_function('shift-up'),
     'shroom' + optional_numerals: repeat_function('shift-down'),
-    'lecksy': Key('cmd-shift-left'), # select rest of line (left)
-    'ricksy': Key('cmd-shift-right'), # select the rest of line (right)
-    'scram' + optional_numerals: repeat_function('alt-shift-left'), # select word to the left
-    'scrish' + optional_numerals: repeat_function('alt-shift-right'),  # select word to the right
+    'lecksy': Key('cmd-shift-left'),  # select rest of line (left)
+    'ricksy': Key('cmd-shift-right'),  # select the rest of line (right)
+    # select word to the left
+    'scram' + optional_numerals: repeat_function('alt-shift-left'),
+    # select word to the right
+    'scrish' + optional_numerals: repeat_function('alt-shift-right'),
 
     # finder shortcuts
     'go computer': Key('cmd-shift-c'),
-	'go desktop': Key('cmd-shift-d'),
-	'go all files': Key('cmd-shift-f'),
-	'go home': Key('cmd-shift-h'),
-	'go icloud': Key('cmd-shift-i'),
-	'go documents': Key('cmd-shift-o'),
-	'go air drop': Key('cmd-shift-r'),
-	'go utilities': Key('cmd-shift-u'),
-	'go downloads': Key('cmd-shift-l'),
-	'go applications': Key('cmd-shift-a'),
-	'go developer': go_to_path('~/Developer'),
-	'go talon': go_to_path('~/.talon/user'),
+    'go desktop': Key('cmd-shift-d'),
+    'go all files': Key('cmd-shift-f'),
+    'go home': Key('cmd-shift-h'),
+    'go icloud': Key('cmd-shift-i'),
+    'go documents': Key('cmd-shift-o'),
+    'go air drop': Key('cmd-shift-r'),
+    'go utilities': Key('cmd-shift-u'),
+    'go downloads': Key('cmd-shift-l'),
+    'go applications': Key('cmd-shift-a'),
+    'go developer': go_to_path('~/Developer'),
+    'go talon': go_to_path('~/.talon/user'),
     'go pictures': go_to_path('~/Pictures'),
 
     # handling tabs
-    'crack' + optional_numerals: repeat_function('cmd-w',0.1),
+    'crack' + optional_numerals: repeat_function('cmd-w', 0.1),
     '(close tab) | (tab close)': Key('cmd-w'),
 
     # various
@@ -141,8 +149,9 @@ keymap.update({
     'split bottom': Key('ctrl-alt-cmd-shift-b'),
     'split top': Key('ctrl-alt-cmd-shift-t'),
     'shift (display | screen)': shift_screen,
-    'shift two (displays | screens)': [shift_screen,shift_screen],
+    'shift two (displays | screens)': [shift_screen, shift_screen],
     'shift (display | screen) same size': Key('ctrl-alt-cmd-shift-down'),
+    'restore windows': Key('ctrl-alt-cmd-shift-o'),
 
     'mission control': lambda m: macos.dock_notify('com.apple.expose.awake'),
     'show desktop': lambda m: macos.dock_notify('com.apple.showdesktop.awake'),
@@ -167,7 +176,7 @@ keymap.update({
     'italics': Key('cmd-i'),
     'underline': Key('cmd-u'),
 
-}) 
+})
 
 ctx.keymap(keymap)
 
@@ -196,7 +205,7 @@ ctx.vocab_remove = [
 
 # ctx.vocab_remove = ['doctor', 'Doctor']
 
-    # WORDS
-    # gibby, shibby, swick, totch, baxley, peach, carmex, kite, wonkrim, wonkrish, scrhim, shrish, fame, fish, crimp, chris, jeep, dune, doom
-    # shockey, shockoon, sprinkle, spring, dear, smear, trundle, jolt, snipline, sprinkoon
-    # rizzle, dizzle, dazzle, razzle
+# WORDS
+# gibby, shibby, swick, totch, baxley, peach, carmex, kite, wonkrim, wonkrish, scrhim, shrish, fame, fish, crimp, chris, jeep, dune, doom
+# shockey, shockoon, sprinkle, spring, dear, smear, trundle, jolt, snipline, sprinkoon
+# rizzle, dizzle, dazzle, razzle
