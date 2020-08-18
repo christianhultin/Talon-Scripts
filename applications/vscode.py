@@ -84,6 +84,7 @@ context.keymap({
 
     # Selecting text
     'select line' + optional_numerals + 'until' + optional_numerals: select_lines_function,
+    'select': Key('cmd + d'),
 
     # Finding text
     'find': Key('cmd-f'),

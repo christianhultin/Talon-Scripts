@@ -2,6 +2,7 @@ from talon.voice import Context, Key, press, Str
 from time import sleep
 from user.utils import parse_words_as_integer, repeat_function, optional_numerals
 
+
 def channel_name(name):
     def channelSwitcher(m):
         delay = 0.3
@@ -11,6 +12,7 @@ def channel_name(name):
         sleep(delay)
         press('enter')
     return channelSwitcher
+
 
 ctx = Context('slack', bundle='com.tinyspeck.slackmacgap')
 
@@ -34,7 +36,8 @@ keymap = {
     'channel Mat': channel_name('Matti Lundgren'),
     'channel stream': channel_name('stream-sense'),
     'channel Sebastian': channel_name('Sebastian Wedmalm'),
-    
+    'channel rod': channel_name('Rodrigo Roa Rodríguez'),
+
     # Navigation
     'move focus': Key('ctrl-`'),
     'next section': Key('f6'),
@@ -80,7 +83,7 @@ keymap = {
     '([toggle] mute | unmute)': Key('m'),
     '([toggle] video)': Key('v'),
     'invite': Key('a'),
-    
+
     # Emojis
     'thumbs up': ':+1:',
     'smiley': ':slightly_smiling_face:',
