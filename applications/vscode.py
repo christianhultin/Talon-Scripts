@@ -84,7 +84,11 @@ context.keymap({
 
     # Selecting text
     'select line' + optional_numerals + 'until' + optional_numerals: select_lines_function,
-    'select': Key('cmd + d'),
+    'select': Key('cmd-d'),
+    'select instances': Key('cmd-shift-l'),
+    'refactor': Key('f2'),
+    'cursor up': Key('alt-cmd-up'),
+    'cursor down': Key('alt-cmd-down'),
 
     # Finding text
     'find': Key('cmd-f'),
@@ -106,6 +110,7 @@ context.keymap({
     'toggle pane': Key('cmd-b'),
     'steffy' + optional_numerals: repeat_function('cmd-alt-left', 0.1),
     'steppy' + optional_numerals: repeat_function('cmd-alt-right', 0.1),
+    'undo crack': Key('cmd-shift-t'),
 
     # special input defined i keybindings.json file, this is from a stackoverflow tip which emulates wim
     'navigate left': navigate_left,
@@ -130,7 +135,6 @@ context.keymap({
     # 'snipple': Key('end cmd-shift-left delete'),
 
     'snapple' + optional_numerals: repeat_function('down cmd-shift-k up cmd-left'),
-    '(select instances) | refactor': Key('cmd-shift-l'),
     'indent': Key('alt-shift-f'),
     'line up' + optional_numerals: repeat_function('alt-up'),
     'line down' + optional_numerals: repeat_function('alt-down'),
