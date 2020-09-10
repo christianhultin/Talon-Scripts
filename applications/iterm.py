@@ -1,5 +1,5 @@
-from talon.voice import Key, Context
 from user.utils import parse_words_as_integer, repeat_function, optional_numerals
+from talon.voice import Key, Context
 
 
 def text(m):
@@ -23,6 +23,10 @@ keymap = {
     'cd sales client': ['cd ~/Developer/Netlight/FrontEnd/sales-client'],
     'cd sales backend': ['cd ~/Developer/Netlight/BackEnd/sales-api'],
     'cd (lough | laugh)': ['cd ~/Developer/Netlight/FrontEnd/laf-client'],
+    'cd galaxy': ['cd ~/Developer/milkywire/galaxy'],
+    'cd voyager': ['cd ~/Developer/milkywire/voyager'],
+    'cd (policy | bossy)': ['cd ~/Developer/milkywire/bosse'],
+    'cd milky': ['cd ~/Developer/milkywire'],
 
     # iterm functionality
     '[toggle] full-screen': Key('cmd-shift-enter'),
@@ -39,12 +43,13 @@ keymap = {
     'restart talon': ['restartOnlyTalon'],
 
     # package managers
-    'start': ['npm run start\n'],
+    'start (application | this | frontend)': ['npm run start\n'],
+    'start galaxy': ['npm run dev -- -s -m'],
     '(start | run) ios': ['npm run ios:dev\n'],
     '(start | run) android': ['npm run android:dev\n'],
-    'start mocked': ['npm run start:mockedBackend\n'],
+    'start (mocked | mock)': ['npm run start:mockedBackend\n'],
     '(start | run) backend': ['SPRING_PROFILES_ACTIVE=development ./gradlew bootRun\n'],
-    'test': ['npm run test\n'],
+    'test (application | this | frontend)': ['npm run test\n'],
     'node install': ['npm i\n'],
     'generate': ['npm run generate\n'],
 
@@ -55,6 +60,7 @@ keymap = {
     'list': ['ls\n'],
     'list more': 'ls -a\n',
     'search': Key('ctrl-r'),
+    'slap': Key('enter'),
 
     # Git
     'add': ['git add '],
@@ -81,7 +87,10 @@ keymap = {
     'reload submodule': ['git submodule deinit -f . && git submodule update --init'],
 
     # Docker
-    'docker componse': ['docker-compose -f docker-compose-env.yml up -d'],
+    'doc': 'docker',
+    'doc status': 'docker ps',
+    'doc compose': ['docker-compose -f docker-compose-env.yml up -d'],
+    'doc compose down': ['docker-compose -f docker-compose-env.yml down'],
 }
 
 ctx.keymap(keymap)

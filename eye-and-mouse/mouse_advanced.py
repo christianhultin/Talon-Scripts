@@ -6,10 +6,11 @@ from user.utils import optional_numerals
 from user.utils import parse_words_as_integer, repeat_function, optional_numerals
 
 # MOVING MOUSE
+
+
 def move_mouse_relative(m):
     direction_type = m._words[1].word
-    multiplier = 50
-    pixels_to_travel = parse_words_as_integer(m._words[2:]) * multiplier
+    pixels_to_travel = 50
     if pixels_to_travel == None:
         return
     direction_vector = {
@@ -22,14 +23,17 @@ def move_mouse_relative(m):
     ctrl.mouse_move(x + direction_vector[0] * pixels_to_travel,
                     y + direction_vector[1] * pixels_to_travel)
 
+
 def move_mouse_absolute(xPos, yPos):
     def move_mouse_to_position(m):
         ctrl.mouse_move(xPos, yPos)
     return move_mouse_to_position
 
+
 # SCROLLING
 scrollAmount = 0
 scrollJob = None
+
 
 def scroll_mouse(direction=1, distanceY=0, distanceX=0):
     def scroll(m):
@@ -40,6 +44,7 @@ def scroll_mouse(direction=1, distanceY=0, distanceX=0):
         for i in range(0, numberOfTimes):
             ctrl.mouse_scroll(direction * distanceY, direction * distanceX)
     return scroll
+
 
 def mouse_scroll(amount):
     def scroll(m):
@@ -52,7 +57,9 @@ def mouse_scroll(amount):
 
     return scroll
 
-##Autoscrolling
+# Autoscrolling
+
+
 def scrollMe():
     global scrollAmount
     if scrollAmount:
@@ -69,7 +76,9 @@ def stopScrolling(m):
     scrollAmount = 0
     cron.cancel(scrollJob)
 
-##Smooth Scrolling
+# Smooth Scrolling
+
+
 def mouse_smooth_scroll(amount):
     def scroll(m):
         total_time = 0.11

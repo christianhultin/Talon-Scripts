@@ -2,7 +2,7 @@ from time import sleep
 from talon import ctrl
 from talon.voice import Context, Key, press, Str
 from user.utils import parse_words_as_integer
-from user.utils import parse_words_as_integer, repeat_function, optional_numerals
+from user.utils import parse_words_as_integer, repeat_function, optional_numerals, numerals
 
 context = Context('Intellij', bundle='com.jetbrains.intellij.ce')
 
@@ -82,7 +82,7 @@ def navigate_left(m):
 
 context.keymap({
     # Navigating text
-    'line' + optional_numerals: jump_to_line,
+    'line' + numerals: jump_to_line,
 
     # Selecting text
     'select line' + optional_numerals + 'until' + optional_numerals: select_lines_function,
@@ -152,8 +152,8 @@ context.keymap({
     '(merge | join) editor[s]': Key('ctrl-cmd-alt-shift-8'),
 
     # IntelliJ specific
-    'run (backend | application)': Key('ctrl-r'),
-    'stop (backend | application)': Key('cmd-f2'),
+    '(start | run) (backend | application | this)': Key('ctrl-r'),
+    'stop (backend | application | this)': Key('cmd-f2'),
     'run function': Key('ctrl-shift-r'),
     'run checkstyle': Key('ctrl-shift-alt-cmd-c'),
 

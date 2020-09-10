@@ -2,8 +2,8 @@ from talon import ctrl
 from talon.voice import Context, Key, press, Str
 from user.utils import repeat_function, optional_numerals, numerals, text_to_number
 
-# context = Context('VSCode', bundle='com.microsoft.VSCode')
 context = Context('VSCode', bundle='com.microsoft.VSCodeInsiders')
+contextDS = Context('DataStudios', bundle='com.azuredatastudio.oss')
 
 
 def jump_to_line(m):
@@ -78,7 +78,7 @@ def navigate_left(m):
     ctrl.mouse_move(x - distance_to_navigate, y)
 
 
-context.keymap({
+keymap = {
     # Navigating text
     'line' + numerals: jump_to_line,
 
@@ -111,6 +111,7 @@ context.keymap({
     'steffy' + optional_numerals: repeat_function('cmd-alt-left', 0.1),
     'steppy' + optional_numerals: repeat_function('cmd-alt-right', 0.1),
     'undo crack': Key('cmd-shift-t'),
+    'crack other': Key('alt-cmd-t'),
 
     # special input defined i keybindings.json file, this is from a stackoverflow tip which emulates wim
     'navigate left': navigate_left,
@@ -155,9 +156,13 @@ context.keymap({
     'Split editor': [Key('ctrl-cmd-alt-shift-7'), navigate_right],
     '(merge | join) editor[s]': [Key('cmd-shift-p'), 'Join All Editor Group\n'],
     'reload window': [Key('cmd-shift-p'), 'Reload window\n'],
+    'execute': Key('cmd-enter'),
 
     # folding
     'fold all': Key('cmd-k cmd-0'),
     'unfold all': Key('cmd-k cmd-j'),
     'fold level' + optional_numerals: fold_level,
-})
+}
+
+context.keymap(keymap)
+contextDS.keymap(keymap)

@@ -137,6 +137,9 @@ keymap.update({
     'windows': Key('f6'),
     'worm': 'python',
     'back tick': '`',
+    'doc': 'docker',
+    'slap': Key('enter'),
+    'jimmy': 'git',
 
     # window management
     'maximize': Key('ctrl-alt-cmd-shift-m'),
