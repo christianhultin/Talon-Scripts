@@ -88,7 +88,7 @@ keymap = {
 
     # Docker
     'doc': 'docker',
-    'doc status': 'docker ps',
+    'doc status': 'docker ps -a',
     'doc compose': ['docker-compose up -d'],
     'doc compose down': ['docker-compose down'],
 }
