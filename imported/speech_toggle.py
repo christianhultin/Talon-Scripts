@@ -1,43 +1,62 @@
-from talon.voice import Context, ContextGroup, press, Key, Str
+
+from talon.voice import Context, ContextGroup
 from talon.engine import engine
 from talon_plugins import speech
-from talon import ui
-from time import sleep
-from user.utils import parse_words_as_integer, repeat_function, optional_numerals
 
-is_swedish_mode = False
+sleep_group = ContextGroup("sleepy")
+sleepy = Context("sleepy", group=sleep_group)
 
-def swedish_mode(m):
-    global is_swedish_mode
-    speech.set_enabled(False)
-    if is_swedish_mode == False:
-        is_swedish_mode = True
-        sleep(0.5)
-        press('cmd-shift-alt-d')
- 
-def talon_mode(m):
-    global is_swedish_mode
-    speech.set_enabled(True)
-    engine.mimic('go to sleep'.split())
-    if is_swedish_mode == True:
-        is_swedish_mode = False
-        sleep(0.5)
-        press('cmd-shift-alt-d')
+dictation_group = ContextGroup("dictation")
+dictation = Context("dictation", group=dictation_group)
+dictation_group.load()
+dictation_group.disable()
 
-def dragon_mode(m):
-    speech.set_enabled(False)
-    engine.mimic('wake up'.split())
 
-sleep_group = ContextGroup('sleepy')
-sleepy = Context('sleepy', group=sleep_group)
+class VoiceType:
+    SLEEPING = 1
+    TALON = 2
+    DRAGON = 3
+    DICTATION = 4
 
-sleepy.keymap({
-    'snore': lambda m: speech.set_enabled(False),
-    'activate': lambda m: speech.set_enabled(True),
 
-    'dragon mode': dragon_mode,
-    'talon mode': talon_mode,
-    'swedish mode': swedish_mode,
+voice_type = VoiceType.TALON
+last_voice_type = VoiceType.TALON
 
-})
+
+def set_voice_type(type):
+    global voice_type, last_voice_type
+    if voice_type != VoiceType.SLEEPING:
+        last_voice_type = voice_type
+    voice_type = type
+
+    talon_enabled = type == VoiceType.TALON
+    dragon_enabled = type == VoiceType.DRAGON
+    dictation_enabled = type == VoiceType.DICTATION
+
+    global speech
+    speech.set_enabled(talon_enabled)
+
+    global dictation_group
+    if not dictation_enabled:
+        dictation_group.disable()
+
+    global engine
+    if dragon_enabled:
+        engine.mimic("wake up".split())
+    else:
+        engine.mimic("go to sleep".split())
+
+    if dictation_enabled:
+        # Without postponing this "go to sleep" will be printed
+        dictation_group.enable()
+
+sleepy.keymap(
+    {
+        "snore": lambda m: set_voice_type(VoiceType.SLEEPING),
+        "activate": lambda m: set_voice_type(last_voice_type),
+        "dragon mode": lambda m: set_voice_type(VoiceType.DRAGON),
+        "dictation mode": lambda m: set_voice_type(VoiceType.DICTATION),
+        "talon mode": lambda m: set_voice_type(VoiceType.TALON),
+    }
+)
 sleep_group.load()

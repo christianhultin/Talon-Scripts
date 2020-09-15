@@ -124,7 +124,7 @@ keymap = {
     '(new tab | nippy)': Key('cmd-n'),
 
     # spacing
-    'slap' + optional_numerals: [Key('esc'), repeat_function('enter')],
+    'slap' + optional_numerals: [repeat_function('enter')],
     'slappy': [Key('esc'), Key('end enter')],
     'slippy': [Key('esc'), Key('home enter up')],
     '(stacy | spacey)': [Key('esc'), Key('enter enter up')],

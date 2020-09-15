@@ -89,8 +89,8 @@ keymap = {
     # Docker
     'doc': 'docker',
     'doc status': 'docker ps',
-    'doc compose': ['docker-compose -f docker-compose-env.yml up -d'],
-    'doc compose down': ['docker-compose -f docker-compose-env.yml down'],
+    'doc compose': ['docker-compose up -d'],
+    'doc compose down': ['docker-compose down'],
 }
 
 ctx.keymap(keymap)
