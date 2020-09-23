@@ -49,7 +49,8 @@ modifiers = {
     'option': 'alt',
 }
 
-digits = {ordinalNumbers[i]: str(i) for i in range(10)}
+# digits = {ordinalNumbers[i]: str(i) for i in range(10)}
+digits = {str(i): str(i) for i in range(10)}
 simple_keys = {k: k for k in simple_keys}
 arrows = {k: k for k in arrows}
 keys = {}
