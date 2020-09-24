@@ -38,6 +38,7 @@ keymap = {
     'channel Sebastian': channel_name('Sebastian Wedmalm'),
     'channel rod': channel_name('Rodrigo Roa Rodríguez'),
     'channel Jacob': channel_name('Jacob Sievers'),
+    'channel Jonas': channel_name('Jonas Demnert'),
 
     # Navigation
     'move focus': Key('ctrl-`'),

@@ -62,7 +62,7 @@ def jump_tab(m):
 delay = 0.2
 
 context.keymap({
-    # 'address bar': focus_address_bar,
+    'address bar': Key('cmd-l'),
 
     'link': [Key('esc'), Key('esc'), Key('esc'), 'f'],
 

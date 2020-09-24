@@ -124,7 +124,6 @@ ctx.keymap({
 
     # more keys and modifier keys are defined in basic_keys.py
     
-    # 'slap': [Key('cmd-right enter')],
     'question [mark]': '?',
     'tilde': '~',
     '(bang | exclamation point)': '!',

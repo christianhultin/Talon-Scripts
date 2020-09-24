@@ -45,11 +45,11 @@ keymap = {
     # package managers
     'start (application | this | frontend)': ['npm run start\n'],
     'start galaxy': ['npm run dev -- -s -m'],
-    '(start | run) ios': ['npm run ios:dev\n'],
-    '(start | run) android': ['npm run android:dev\n'],
-    'start (mocked | mock)': ['npm run start:mockedBackend\n'],
+    '(start | run) ios': ['npm run ios:dev'],
+    '(start | run) android': ['npm run android:dev'],
+    'start (mocked | mock)': ['npm run start:mockedBackend'],
     '(start | run) backend': ['SPRING_PROFILES_ACTIVE=development ./gradlew bootRun\n'],
-    'test (application | this | frontend)': ['npm run test\n'],
+    'test (application | this | frontend)': ['npm run test'],
     'node install': ['npm i\n'],
     'generate': ['npm run generate\n'],
 
@@ -89,6 +89,10 @@ keymap = {
     # Docker
     'doc': 'docker',
     'doc status': 'docker ps -a',
+    'doc images': 'docker images',
+    'doc volumes': 'docker volume ls',
+    'doc volume prune': 'docker volume prune',
+    'doc system prune': 'docker system prune -a',
     'doc compose': ['docker-compose up -d'],
     'doc compose down': ['docker-compose down'],
 }
