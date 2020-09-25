@@ -11,5 +11,5 @@ ctx.keymap({
     'let': 'let ',
 
     # Snippets
-    'log': snippet('cl'),
+    'log': ['console.log()'],
  })

@@ -1,6 +1,6 @@
 from talon.voice import Context, Key, press, Str
 from time import sleep
-from user.utils import parse_words_as_integer, repeat_function, optional_numerals
+from user.utils import parse_words_as_integer, repeat_function, optional_numerals, command_with_delay
 
 
 def channel_name(name):
@@ -22,7 +22,7 @@ keymap = {
     'read all': Key('shift-esc'),
 
     # Channel
-    'channel': Key('cmd-k'),
+    'channel': command_with_delay('cmd-k down', 0.2),
     'channel last': Key('alt-up'),
     'channel up' + optional_numerals: repeat_function('alt-up', 0.2),
     'channel down' + optional_numerals: repeat_function('alt-down', 0.2),
@@ -67,7 +67,9 @@ keymap = {
     'tag channel': Key('#'),
     '([insert] command | commandify)': Key('cmd-shift-c'),
     'variable': ['``', Key('left')],
-    '[insert] code': ['``````', Key('left left left'), Key('shift-enter'), Key('shift-enter'), Key('up')],
+    # '[insert] code': ['``````', Key('left left left'), Key('shift-enter'), Key('shift-enter'), Key('up')],
+    'coded word': Key('cmd-shift-c'),
+    'coded block': Key('cmd-shift-alt-c'),
     '(bullet | bulleted) list': Key('cmd-shift-8'),
     '(number | numbered) list': Key('cmd-shift-7'),
     '(quotes | quotation)': Key('cmd-shift->'),

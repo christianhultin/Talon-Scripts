@@ -15,18 +15,19 @@ ctx = Context('iterm', bundle='com.googlecode.iterm2')
 
 keymap = {
     # shortcut projects:
-    'cd home': ['cd ~/'],
-    'cd talon': ['cd ~/.talon/user'],
-    'cd developer': ['cd ~/Developer'],
-    'cd two point you': ['cd ~/Developer/TwoPointYou/'],
-    'cd feedback': ['cd ~/Developer/Netlight/FrontEnd/feedback-client'],
-    'cd sales client': ['cd ~/Developer/Netlight/FrontEnd/sales-client'],
-    'cd sales backend': ['cd ~/Developer/Netlight/BackEnd/sales-api'],
-    'cd (lough | laugh)': ['cd ~/Developer/Netlight/FrontEnd/laf-client'],
-    'cd galaxy': ['cd ~/Developer/milkywire/galaxy'],
-    'cd voyager': ['cd ~/Developer/milkywire/voyager'],
-    'cd (policy | bossy)': ['cd ~/Developer/milkywire/bosse'],
-    'cd milky': ['cd ~/Developer/milkywire'],
+    'go home': ['cd ~/'],
+    'go talon': ['cd ~/.talon/user'],
+    'go developer': ['cd ~/Developer'],
+    'go two point you': ['cd ~/Developer/TwoPointYou/'],
+    'go feedback': ['cd ~/Developer/Netlight/FrontEnd/feedback-client'],
+    'go sales client': ['cd ~/Developer/Netlight/FrontEnd/sales-client'],
+    'go sales backend': ['cd ~/Developer/Netlight/BackEnd/sales-api'],
+    'go (lough | laugh)': ['cd ~/Developer/Netlight/FrontEnd/laf-client'],
+    'go galaxy': ['cd ~/Developer/milkywire/galaxy'],
+    'go voyager': ['cd ~/Developer/milkywire/voyager'],
+    'go (policy | bossy)': ['cd ~/Developer/milkywire/bosse'],
+    'go milky': ['cd ~/Developer/milkywire'],
+    'go up': ['cd ..'],
 
     # iterm functionality
     '[toggle] full-screen': Key('cmd-shift-enter'),
@@ -50,6 +51,7 @@ keymap = {
     'start (mocked | mock)': ['npm run start:mockedBackend'],
     '(start | run) backend': ['SPRING_PROFILES_ACTIVE=development ./gradlew bootRun\n'],
     'test (application | this | frontend)': ['npm run test'],
+    'test settings': ['npm run setup:dev'],
     'node install': ['npm i\n'],
     'generate': ['npm run generate\n'],
 
@@ -66,13 +68,14 @@ keymap = {
     'add': ['git add '],
     'add all': ['git add .'],
     'commit': ["git commit -m ''", Key('left')],
+    'amend': ["git commit --amend"],
     'simple commit': ["git add .  && git commit -m 'update'  && git push"],
-    'clone': ['git clone '],
+    'clone': ['git clone ', Key('cmd-v')],
     'push up': ['git push'],
     'status': ['git status\n'],
     '(difference | did | dave)': 'git diff\n',
     'pull down': ['git pull\n'],
-    '(pull origin) | (origin master)': ['git pull origin master\n'],
+    '(pull origin) | (origin master)': ['git pull origin master'],
     '[remote] add upstream': ['git remote add upstream'],
     'fetch upstream': ['git fetch upstream'],
     'fetch': ['git fetch\n'],
@@ -85,6 +88,7 @@ keymap = {
     'reset hard': ['git reset --hard'],
     'go (to) master': ['git checkout master\n'],
     'reload submodule': ['git submodule deinit -f . && git submodule update --init'],
+    'remove untracked files': 'git clean -f',
 
     # Docker
     'doc': 'docker',
@@ -95,6 +99,12 @@ keymap = {
     'doc system prune': 'docker system prune -a',
     'doc compose': ['docker-compose up -d'],
     'doc compose down': ['docker-compose down'],
+
+    # Knex:
+    '( neck | nick ) migrate': 'knex migrate:latest',
+    '( neck | nick ) rollback': 'knex migrate:rollback',
+    '( neck | nick ) rollback all': 'knex migrate:rollback --all',
+    '( neck | nick ) migrate (create | make)': 'knex migrate:make ',
 }
 
 ctx.keymap(keymap)
