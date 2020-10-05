@@ -11,5 +11,5 @@ ctx.keymap({
     'let': 'let ',
 
     # Snippets
-    'log': ['console.log()'],
+    'log': ['console.log();', Key('left'), Key('left')],
  })

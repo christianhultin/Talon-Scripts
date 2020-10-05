@@ -141,7 +141,7 @@ keymap = {
     'line down' + optional_numerals: repeat_function('alt-down'),
 
     # various
-    '(comment | cast)': Key('cmd-shift-7'),
+    'cast': Key('cmd-shift-7'),
     '(arrange | fix) imports': Key('alt-shift-o'),
     'block comment': Key('alt-shift-a'),
     'master': Key('cmd-p'),
